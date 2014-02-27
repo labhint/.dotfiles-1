@@ -5,6 +5,8 @@ FROM pandrew/ubuntu-current
 
 MAINTAINER Paul Andrew Liljenberg <letters@paulnotcom.se>
 
+RUN apt-get -qqy install mercurial
+
 # Set HOME for root user
 ENV HOME /root
 WORKDIR /root
