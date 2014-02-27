@@ -27,3 +27,5 @@ RUN bash -c 'goenv install 1.2 && goenv global 1.2'
 
 
 RUN echo 'eval "$(pyenv init -)"' >  ~/.bash_profile
+
+RUN ln -s /.dockerinit /usr/local/bin/docker
