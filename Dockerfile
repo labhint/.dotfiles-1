@@ -1,15 +1,16 @@
-DOCKER-VERSION 0.8.1
+DOCKER-VERSION 0.9.0
 
 
-FROM pandrew/ubuntu-current
+FROM debian:jessie
 
 MAINTAINER Paul Andrew Liljenberg <letters@paulnotcom.se>
 
+RUN apt-get update -y && apt-get upgrade -y
 
 # Set HOME for root user
 ENV HOME /root
 WORKDIR /root
-RUN apt-get install -qqy tmux zsh build-essential mercurial libssl-dev zlib1g-dev
+RUN apt-get install -qqy curl git-core tmux zsh build-essential mercurial libssl-dev zlib1g-dev
 
 RUN chsh -s /usr/bin/zsh
 
