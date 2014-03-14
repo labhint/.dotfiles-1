@@ -5,7 +5,9 @@ FROM debian:jessie
 
 MAINTAINER Paul Andrew Liljenberg <letters@paulnotcom.se>
 
-RUN apt-get update -y && apt-get upgrade -y
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update -qqy && apt-get upgrade -qqy
 
 # Set HOME for root user
 ENV HOME /root
