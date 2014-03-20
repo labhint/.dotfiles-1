@@ -1,0 +1,10 @@
+[user]
+	name = pandrew
+	email = letters@paulnotcom.se
+[core]
+	excludefile = ~/.gitignore
+	editor = vim
+[push]
+    default = matching
+[branch]
+        autosetuprebase = always
