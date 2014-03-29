@@ -1,4 +1,4 @@
-DOCKER-VERSION 0.9.0
+DOCKER-VERSION 0.9.1
 
 
 FROM debian:jessie
@@ -7,12 +7,21 @@ MAINTAINER Paul Andrew Liljenberg <letters@paulnotcom.se>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -qqy && apt-get upgrade -qqy
 
 # Set HOME for root user
 ENV HOME /root
 WORKDIR /root
-RUN apt-get install -qqy curl git-core tmux zsh build-essential mercurial libssl-dev zlib1g-dev
+
+RUN apt-get update && apt-get -qqy install \
+    curl \
+    git-core \
+    tmux \
+    zsh \
+    build-essential \
+    mercurial \
+    libssl-dev \
+    zlib1g-dev \
+    vim
 
 RUN chsh -s /usr/bin/zsh
 
