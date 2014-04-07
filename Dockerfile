@@ -21,6 +21,7 @@ RUN apt-get update && apt-get -qqy install \
     mercurial \
     libssl-dev \
     zlib1g-dev \
+    bzr \
     vim
 
 RUN chsh -s /usr/bin/zsh
