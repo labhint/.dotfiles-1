@@ -4,7 +4,6 @@
 [core]
 	excludefile = ~/.gitignore
 	editor = vim
-[push]
-    default = matching
-[branch]
-        autosetuprebase = always
+[color]
+	ui = true
+
