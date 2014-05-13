@@ -63,6 +63,7 @@ RUN ln -s ~/.dotfiles/zsh.theme ~/.zsh.theme
 RUN ln -s ~/.dotfiles/tmux.cof ~/.tmux.conf
 RUN ln -s ~/.dotfiles/vimrc ~/.vimrc
 RUN ln -s ~/.dotfiles/gitconfig ~/.gitconfig
+RUN ln -s ~/.dotfiles/gitignore ~/.gitignore
 
 RUN ln -s /.dockerinit /usr/local/bin/docker
 
