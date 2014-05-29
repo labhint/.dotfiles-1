@@ -2,7 +2,7 @@
 	name = pandrew
 	email = letters@paulnotcom.se
 [core]
-	excludefile = ~/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
 [color]
 	ui = true
