@@ -1,8 +1,5 @@
-DOCKER-VERSION 0.9.1
-
-
-FROM debian:jessie
-
+DOCKER-VERSION 0.12.0
+FROM crosbymichael/golang
 MAINTAINER Paul Andrew Liljenberg <letters@paulnotcom.se>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -11,36 +8,30 @@ ENV DEBIAN_FRONTEND noninteractive
 # Set HOME for root user
 ENV HOME /root
 WORKDIR /root
+ENV LC_ALL C.UTF-8
 
-RUN apt-get update && apt-get -qqy install \
+RUN apt-get update && apt-get install --no-install-recommends -y \
     curl \
+    locales \
+    libncurses5-dev \
     git-core \
     tmux \
-    zsh \
+    make \
     build-essential \
     mercurial \
     libssl-dev \
     zlib1g-dev \
     bzr \
+    htop \
     vim
 
-RUN chsh -s /usr/bin/zsh
-
-# Install oh-my-zsh
-RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-
-# Install goenv
-RUN git clone https://github.com/wfarr/goenv.git ~/.goenv
-
-# Install pyenv
-RUN git clone https://github.com/yyuu/pyenv.git .pyenv
-
-# Install rbenv
-RUN git clone https://github.com/sstephenson/rbenv.git .rbenv
+RUN dpkg-reconfigure locales && locale-gen C.UTF-8 && /usr/sbin/update-locale LANG=C.UTF-8
 
 
-# Install ruby-build
-RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+RUN curl -fsL -O http://fishshell.com/files/2.1.0/fish-2.1.0.tar.gz && tar -zxf fish-2.1.0.tar.gz &&\
+	cd fish-2.1.0/ && ./configure --prefix=/usr/local && make && make install &&\
+	echo '/usr/local/bin/fish' | tee -a /etc/shells && chsh -s /usr/local/bin/fish &&\
+	cd && rm -rf fish-2.1.0 && rm fish-2.1.0.tar.gz
 
 RUN mkdir -p ~/.vim/bundle
 RUN git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
@@ -49,22 +40,15 @@ RUN mkdir $HOME/gocode
 ENV GOPATH $HOME/gocode
 ENV PATH $HOME/.goenv/shims:$HOME/.goenv/bin:$GOPATH/bin:$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH
 
-RUN echo 'eval "$(goenv init -)"' >  ~/.bash_profile
-RUN echo 'eval "$(rbenv init -)"' >  ~/.bash_profile
-RUN echo 'eval "$(pyenv init -)"' >  ~/.bash_profile
-
-
-RUN bash -c 'goenv install 1.2.1 && goenv global 1.2.1'
 
 ADD . /root/.dotfiles
-RUN ln -s ~/.dotfiles/zshenv ~/.zshenv
-RUN ln -s ~/.dotfiles/zshrc ~/.zshrc
-RUN ln -s ~/.dotfiles/zsh.theme ~/.zsh.theme
-RUN ln -s ~/.dotfiles/tmux.cof ~/.tmux.conf
-RUN ln -s ~/.dotfiles/vimrc ~/.vimrc
-RUN ln -s ~/.dotfiles/gitconfig ~/.gitconfig
-RUN ln -s ~/.dotfiles/gitignore ~/.gitignore
 
-RUN ln -s /.dockerinit /usr/local/bin/docker
+RUN	ln -s ~/.dotfiles/tmux.cof ~/.tmux.conf && \
+	mkdir -p /root/.config/fish && ln -s /root/.dotfiles/config.fish /root/.config/fish/config.fish && \
+	ln -s ~/.dotfiles/vimrc ~/.vimrc && \
+	ln -s ~/.dotfiles/gitconfig ~/.gitconfig && \
+	ln -s ~/.dotfiles/gitignore ~/.gitignore && \
+	ln -s /.dockerinit /usr/local/bin/docker && \
+	ln -s /usr/local/go /root/go
 
-ENTRYPOINT ["tmux"]
+CMD ["tmux"]
