@@ -1,4 +1,5 @@
-" letters@paulnotcom.se
+set shell=/bin/bash
+
 if has('vim_starting')
     set nocompatible               " Be iMproved
 
@@ -7,7 +8,7 @@ if has('vim_starting')
 endif
 
 " Required:
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -15,7 +16,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/syntastic'
 
+call neobundle#end()
 
 " Required:
 filetype plugin indent on
