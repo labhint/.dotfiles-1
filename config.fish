@@ -21,7 +21,7 @@ set -x GOBIN $GOROOT/bin
 set -x GOPATH $HOME/development/gocode
 
 set PATH $HOME/go/bin $PATH;
-set PATH $HOME/.dotfiles/bin $PATH;
+set PATH $HOME/.bin $PATH;
 set PATH $GOBIN $PATH
 set PATH /usr/sbin $PATH;
 
