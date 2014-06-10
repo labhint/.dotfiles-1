@@ -47,7 +47,7 @@ alias gpull='git pull'
 alias gpullo='git pull origin'
 alias gremotes='git remote -v'
 alias gcount='git count-objects -H'
-alias addlast='git commit --amend –C HEAD'
+alias addlast='git commit --amend -C HEAD'
 alias gcount='git fetch --all'
 alias resetmaster='git fetch origin; and git reset --hard origin/master'
 alias gls='git stash list'
@@ -90,6 +90,7 @@ function fish_prompt
   set -l green (set_color -o green)
   set -l normal (set_color normal)
 
+  set -l host $cyan(hostname)
   set -l cwd $cyan(basename (prompt_pwd))
 
   if [ (_git_branch_name) ]
@@ -102,7 +103,7 @@ function fish_prompt
     end
   end
 
-  echo -n -s $cwd $red '|' $git_info $normal ⇒ ' ' $normal
+  echo -n -s $host ' ' $cwd $red '|' $git_info $normal ⇒ ' ' $normal
 end
 
 function run_docker
