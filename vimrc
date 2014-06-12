@@ -19,6 +19,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'Shougo/unite.vim'
 
 call neobundle#end()
 
