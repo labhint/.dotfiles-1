@@ -47,4 +47,6 @@ RUN	ln -s ~/.dotfiles/tmux.cof ~/.tmux.conf && \
 	ln -s /.dockerinit /usr/local/bin/docker && \
 	ln -s /usr/local/go /root/go
 
+RUN bash /root/.dotfiles/go-install.sh
+
 CMD ["tmux"]
