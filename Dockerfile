@@ -36,10 +36,6 @@ RUN curl -fsL -O http://fishshell.com/files/2.1.0/fish-2.1.0.tar.gz && tar -zxf 
 RUN mkdir -p ~/.vim/bundle
 RUN git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
-RUN mkdir $HOME/gocode
-ENV GOPATH $HOME/gocode
-ENV PATH $HOME/.goenv/shims:$HOME/.goenv/bin:$GOPATH/bin:$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH
-
 
 ADD . /root/.dotfiles
 
