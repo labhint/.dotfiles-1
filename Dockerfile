@@ -12,6 +12,7 @@ ENV LC_ALL C.UTF-8
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     curl \
+    less \
     locales \
     libncurses5-dev \
     git-core \
