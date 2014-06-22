@@ -1,4 +1,4 @@
-DOCKER-VERSION 0.12.0
+DOCKER-VERSION 1.0.0
 FROM crosbymichael/golang
 MAINTAINER Paul Andrew Liljenberg <letters@paulnotcom.se>
 
