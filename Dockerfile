@@ -36,6 +36,7 @@ ADD . /root/.dotfiles
 RUN mkdir ~/.ssh
 
 RUN ln -s ~/.dotfiles/tmux.cof ~/.tmux.conf && \
+    ln -s ~/.dotfiles/bash.d ~/.bash.d && \
     ln -fs ~/.dotfiles/bash_profile ~/.bash_profile && \
     ln -fs ~/.dotfiles/bashrc ~/.bashrc && \
     ln -s ~/.dotfiles/vimrc ~/.vimrc && \
