@@ -142,7 +142,7 @@ prompt_compact() {
 }
 
 prompt_color() {
-    PS1="${GREEN}\W\$(parse_git_branch) → ${GREY}"
+    PS1="\h ${GREEN}\W\$(parse_git_branch) → ${GREY}"
     PS2="\[[33;1m\]continue \[[0m[1m\]> "
 }
 
@@ -172,9 +172,11 @@ alias gt='git tag'
 alias be='bundle exec'
 alias v='vagrant'
 rmex() {
-    docker ps -a | grep 'Exit' | awk '{print $1}' | xargs docker rm
+	docker ps -a | grep 'Exit' | awk '{print $1}' | xargs docker rm
 }
-
+rmnone() {
+	docker rmi $(docker images | grep "<none>" | awk '{print $3}')
+}
 # Usage: puniq [path]
 # Remove duplicate entries from a PATH style value while
 # retaining the original order.
