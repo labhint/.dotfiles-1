@@ -1,9 +1,10 @@
 [user]
-	name = pandrew
-	email = letters@paulnotcom.se
+	name = Paul Liljenberg
+	email = liljenberg.paul@gmail.com
 [core]
-	excludesfile = ~/.gitignore
 	editor = vim
-[color]
-	ui = true
-
+	excludesfile = ~/.gitignore
+[push]
+    default = matching
+[github]
+	user = pandrew
