@@ -2,9 +2,6 @@ DOCKER-VERSION 1.0.0
 FROM crosbymichael/golang
 MAINTAINER Paul Andrew Liljenberg <letters@paulnotcom.se>
 
-ENV DEBIAN_FRONTEND noninteractive
-
-
 # Set HOME for root user
 ENV HOME /root
 WORKDIR /root
