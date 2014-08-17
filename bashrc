@@ -177,6 +177,9 @@ rmex() {
 rmnone() {
 	docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 }
+development_go() {
+    docker run -ti --rm --privileged -v $HOME/development/$@:/root/development/go/src/github.com/pandrew/$@ -v ~/.ssh:/root/.ssh pandrew/development
+}
 # Usage: puniq [path]
 # Remove duplicate entries from a PATH style value while
 # retaining the original order.
