@@ -1,6 +1,6 @@
 DOCKER-VERSION 1.0.0
 FROM crosbymichael/golang
-MAINTAINER Paul Andrew Liljenberg <letters@paulnotcom.se>
+MAINTAINER Paul Andrew Liljenberg <liljenberg.paul@gmail.com>
 
 # Set HOME for root user
 ENV HOME /root
