@@ -1,18 +1,23 @@
-DOCKER-VERSION 1.0.0
-FROM crosbymichael/golang
+FROM ubuntu:14.04
 MAINTAINER Paul Andrew Liljenberg <liljenberg.paul@gmail.com>
 
 # Set HOME for root user
 ENV HOME /root
 WORKDIR /root
+
 ENV LC_ALL C.UTF-8
+ENV GOPATH /go
+ENV GOROOT /usr/local/go
+ENV PATH $PATH:/usr/local/go/bin:/go/bin
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     curl \
+    git-core \
     less \
+    ca-certificates \
+    mercurial \
     openssh-client \
     locales \
-    git-core \
     tmux \
     make \
     build-essential \
@@ -21,12 +26,14 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     htop \
     vim
 
-RUN dpkg-reconfigure locales && locale-gen C.UTF-8 && /usr/sbin/update-locale LANG=C.UTF-8
-
 
 RUN mkdir -p ~/.vim/bundle
 RUN git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
+RUN curl -s https://storage.googleapis.com/golang/go1.3.1.linux-amd64.tar.gz | tar -v -C /usr/local -xz
+
+RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 ADD . /root/.dotfiles
 
