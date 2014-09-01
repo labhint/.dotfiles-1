@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     git-core \
     less \
     ca-certificates \
+    ruby-dev \
     mercurial \
     openssh-client \
     locales \
