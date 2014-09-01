@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     tmux \
     make \
     build-essential \
+    libssl-dev \
     mercurial \
     bzr \
     htop \
