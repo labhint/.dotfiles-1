@@ -4,10 +4,13 @@ LOG=/tmp/make.log
 BASE=/root
 VERSION=$(cat $BASE/docker/VERSION)
 echo "" > $LOG
-
-git clone https://github.com/docker/docker.git $BASE/docker || cd $BASE/docker && git checkout . && git pull && git checkout master >> $LOG
+pull() {
+	exec 3>&1 1>>${LOG} 2>&1
+	git clone https://github.com/docker/docker.git $BASE/docker || cd $BASE/docker && git checkout . && git pull
+}
 
 master() {
+	exec 3>&1 1>>${LOG} 2>&1
 	cd $BASE/docker \
 	&& git checkout master \
 	&& make -w
@@ -31,6 +34,7 @@ deploy() {
 
 case "$1" in
 	master)
+	    pull
 	    master
 	    ;;
         deploy)
