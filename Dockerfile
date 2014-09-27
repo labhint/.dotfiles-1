@@ -49,7 +49,7 @@ RUN ln -s ~/.dotfiles/tmux.cof ~/.tmux.conf && \
     ln -s ~/.dotfiles/gitconfig ~/.gitconfig && \
     ln -s ~/.dotfiles/gitignore ~/.gitignore && \
     ln -s /.dockerinit /usr/local/bin/docker && \
-    ln -s /usr/local/go /root/go
+    ln -s /usr/local/go ~/go
 
 RUN bash /root/.dotfiles/go-install.sh
 
