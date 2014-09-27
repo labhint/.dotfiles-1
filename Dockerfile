@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 RUN mkdir -p ~/.vim/bundle
 RUN git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
-RUN curl -s https://storage.googleapis.com/golang/go1.3.1.linux-amd64.tar.gz | tar -v -C /usr/local -xz
+RUN curl -s https://storage.googleapis.com/golang/go1.3.2.linux-amd64.tar.gz | tar -v -C /usr/local -xz
 
 RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 RUN git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
