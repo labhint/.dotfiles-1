@@ -3,6 +3,19 @@
 # This checks if go has been installed and adds it to the path
 # if it has.
 
+if [[ ! -h "$HOME/go" && ! -d "/usr/local/go" ]]; then
+    case $UNAME in
+        Darwin)
+            VERSION="darwin-amd64-osx10.8"
+            ;;
+        Linux)
+            VERSION="linux-amd64"
+            ;;
+    esac
+    curl -s https://storage.googleapis.com/golang/go1.3.2.${VERSION}.tar.gz | tar -v -C /usr/local -xz
+    ln -s /usr/local/go ~/go
+fi
+
 export GOPATH="$HOME/development/go"
 mkdir -p $GOPATH
 export PATH="${GOPATH}/bin:$PATH"
