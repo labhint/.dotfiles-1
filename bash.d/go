@@ -12,7 +12,7 @@ if [[ ! -h "$HOME/go" && ! -d "/usr/local/go" ]]; then
             VERSION="linux-amd64"
             ;;
     esac
-    curl -s https://storage.googleapis.com/golang/go1.3.2.${VERSION}.tar.gz | tar -v -C /usr/local -xz
+    curl -s https://storage.googleapis.com/golang/go1.3.3.${VERSION}.tar.gz | tar -v -C /usr/local -xz
     ln -s /usr/local/go ~/go
 fi
 
