@@ -22,6 +22,12 @@ release() {
 	&& make -w
 }
 
+test() {
+        cd $BASE/docker \
+        && git checkout release \
+        && make -w test
+}
+
 deploy() {
 	supervisorctl stop docker >> $LOG
 	cp -v $BASE/docker/bundles/$VERSION/binary/docker-$VERSION /usr/local/bin/docker >> $LOG
@@ -40,6 +46,9 @@ case "$1" in
         deploy)
             deploy
             ;;
+	test)
+	    test
+	    ;;
 	release)
 	    release
 	    ;;
