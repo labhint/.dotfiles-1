@@ -55,7 +55,7 @@ esac
 # OS-Specific path stuff
 if [[ `uname` == "Darwin" ]]; then
     alias emacs="/usr/local/Cellar/emacs/23.3/Emacs.app/Contents/MacOS/Emacs -nw"
-    export DOCKER_HOST="tcp://localhost:2375"
+    export DOCKER_HOST=tcp://$(/usr/local/bin/boot2docker ip 2>/dev/null):2375
 elif [[ `uname` == "Linux" ]]; then
     PATH="/usr/bin/perlbin/vendor:$PATH"
     export DOCKER_HOST="unix:///var/run/docker.sock"
