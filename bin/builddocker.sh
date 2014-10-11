@@ -11,19 +11,24 @@ pull() {
 master() {
 	cd $BASE/docker \
 	&& git checkout master \
-	&& make -w
+	&& make cross -w
 }
 
 release() {
 	cd $BASE/docker \
 	&& git checkout release \
-	&& make -w
+	&& make cross -w
 }
 
 test() {
         cd $BASE/docker \
         && git checkout master \
         && make -w test
+}
+
+download() {
+	VERSION=$(ssh root@srv1 cat /root/docker/VERSION)
+	rsync -avzP -e ssh root@srv1:~/docker/bundles/${VERSION}/cross/darwin/amd64/docker-${VERSION} ~/bin/docker
 }
 
 deploy() {
@@ -55,6 +60,9 @@ case "$1" in
 	release)
 	    log
 	    release
+	    ;;
+	download)
+	    download
 	    ;;
          
          
