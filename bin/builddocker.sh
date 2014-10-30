@@ -59,6 +59,7 @@ case "$1" in
 	    ;;
 	release)
 	    log
+	    pull
 	    release
 	    ;;
 	download)
