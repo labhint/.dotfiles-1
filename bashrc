@@ -178,11 +178,8 @@ rmnone() {
 	docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 }
 development_go() {
-	docker run -ti --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/development/:/root/development/go/src/github.com/pandrew/ -v ~/.ssh:/root/.ssh "$@" pandrew/.dotfiles
+	docker run -ti --rm --privileged -v $(which docker):/usr/local/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/development/:/root/development/go/src/github.com/pandrew/ -v ~/.ssh:/root/.ssh "$@" pandrew/.dotfiles
 }
-#copytocontainer() {
-#	cat "$1" | docker exec -i "$2" sh -c 'cat > "$1"'
-#}
 # Usage: puniq [path]
 # Remove duplicate entries from a PATH style value while
 # retaining the original order.
