@@ -62,8 +62,8 @@ elif [[ `uname` == "Linux" ]]; then
 fi
 
 # ~/bin if it exists
-test -d "$HOME/bin" &&
-PATH="$HOME/bin:$PATH"
+test -d "$HOME/.bin" &&
+PATH="$HOME/.bin:$PATH"
 
 # texbin if it exists for LaTeX stuff
 test -d "/usr/texbin" &&
